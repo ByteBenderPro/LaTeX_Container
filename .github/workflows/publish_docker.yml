@@ -3,7 +3,6 @@
 # 2.	It builds the Docker image from your repository.
 # 3.	The image is tagged as ghcr.io/<your-username>/latex-docker:latest.
 # 4.	It logs into GHCR using the built-in GITHUB_TOKEN and pushes the image.
-
 name: Build and Publish LaTeX Docker Image
 
 on:
@@ -29,13 +28,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Convert GitHub Username to Lowercase
+        run: echo "USERNAME_LOWER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker Image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/latex-docker:latest .
+          docker build -t ghcr.io/${{ env.USERNAME_LOWER }}/latex-docker:latest .
 
       - name: Push Docker Image to GHCR
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/latex-docker:latest
+          docker push ghcr.io/${{ env.USERNAME_LOWER }}/latex-docker:latest
