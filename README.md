@@ -2,6 +2,9 @@
 
 This repository contains a LaTeX environment setup for compiling and editing LaTeX documents.
 
+### Build status
+[![Build and Publish LaTeX Docker Image](https://github.com/ByteBenderPro/LaTeX_Container/actions/workflows/publish_docker.yml/badge.svg)](https://github.com/ByteBenderPro/LaTeX_Container/actions/workflows/publish_docker.yml)
+
 ## Features
 
 - Pre-configured LaTeX environment
