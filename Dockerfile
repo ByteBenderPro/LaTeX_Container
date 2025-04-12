@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     inkscape \
     git \
     latexmk \
+    xindy \
     biber \
     ghostscript \
     python3 \
