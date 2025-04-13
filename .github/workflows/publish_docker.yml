@@ -47,4 +47,4 @@ jobs:
           gh api -X PATCH https://api.github.com/user/packages/container/latex-docker/visibility \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            -d '{"visibility":"public"}'
+            -F visibility:public
