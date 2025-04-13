@@ -41,11 +41,3 @@ jobs:
       - name: Push Docker Image to GHCR
         run: |
           docker push ghcr.io/${{ env.USERNAME_LOWER }}/latex-docker:latest
-
-      - name: Set Image to Public
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PATCH https://api.github.com/user/packages/container/latex-docker/visibility \
-            -H "Accept: application/vnd.github.v3+json" \
-            -F visibility:public
